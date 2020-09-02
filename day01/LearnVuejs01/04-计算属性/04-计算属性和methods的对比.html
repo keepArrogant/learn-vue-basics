@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{firstName +' '+ lastName}} </h2>
+        <h2>{{firstName}} {{lastName}}</h2>
+
+        <!-- 执行了四次  methods中存储的都是方法 -->
+        <h2>{{getFullName()}}</h2>
+        <h2>{{getFullName()}}</h2>
+        <h2>{{getFullName()}}</h2>
+        <h2>{{getFullName()}}</h2>
+
+        <!-- computed里面存储的是属性和属性值  -->
+        <!-- 执行了一次，其他三次从缓存中提取，只要属性值不改变就从缓存中提取 -->
+        <h2>{{fullName}}</h2>
+        <h2>{{fullName}}</h2>
+        <h2>{{fullName}}</h2>
+        <h2>{{fullName}}</h2>
+
+        <!-- 相比而言 computed的中的get 计算属性 效率更高 对性能的提升更好 -->
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                firstName: '张学友',
+                lastName: '刘德华'
+            },
+            methods: {
+                getFullName: function () {
+                    console.log('getFullName');
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+            computed: {
+                fullName: function () {
+                    console.log('fullName');
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

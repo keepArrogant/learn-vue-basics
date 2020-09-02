@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind指令可以动态绑定数据</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 错误的做法： 这里不可以使用mustache语法 -->
+        <!-- <img src="{{imgURL}}" alt=""> -->
+        <!-- 正确的做法： 使用v-bind指令 -->
+        <img v-bind:src="imgURL" alt="">
+        <a v-bind:href="aHref">哔哩哔哩动画</a>
+
+        <!-- 语法糖的写法 -->
+        <img :src="imgURL" alt="">
+        <a :href="aHref">bilibili</a>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                imgURL: 'https://i0.hdslb.com/bfs/archive/6234e7329a89b1b987175108bf0c5bbda6964019.jpg@206w_116h_1c_100q.webp',
+                aHref: 'https://www.bilibili.com/'
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in letters">{{item}}</li>
+        </ul>
+        <button @click="btnClick">按钮</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                letters: ['3', '5', '1', '4', '6']
+            },
+            methods: {
+                btnClick() {
+                    // 1. push() 在数组的最后添加元素 里面跟几个参数就添加几个
+                    // this.letters.push('aaa');
+                    // this.letters.push('aaa', 'bbb', 'ccc')
+
+                    // 2. pop() 删除数组中的最后一个元素
+                    // this.letters.pop();
+
+                    // 3. shift(): 删除数组中的第一个元素
+                    // this.letters.shift();
+
+                    // 4. unshift(): 在数组最前面添加元素
+                    // this.letters.unshift('aaa', 'bbb', 'ccc');
+
+                    // 5. splice()： 删除元素/插入元素/替换元素
+                    // 删除元素：第二个参数传入你要删除几个元素(如果没有传，就删除后面所有的元素)
+                    // 替换元素： 第二个参数，表示我们要替换几个元素，后面再跟上要替换之后的元素
+                    // 插入元素：第二个参数，传入0，并且后面跟上要插入的元素
+                    // 删除元素:
+                    // this.letters.splice(1, 2)
+                    // this.letters.splice(1)
+                    // 替换元素：
+                    // this.letters.splice(1, 2, 'g', 'h')
+                    // 插入元素：
+                    // this.letters.splice(1, 0, 'g', 'h', 'm', 'n')
+
+                    // 6. sort()：是数组自带的一种排序方法，默认情况下会将元素按照字符串进行比较
+                    // this.letters.sort()
+                    // this.letters.sort(function (a, b) {
+                    //     // return b - a; //降序排序
+                    //     return a - b; //升序排序
+                    // })
+
+                    // 7. reverse() 翻转数组中的元素
+                    // this.letters.reverse()
+
+
+
+                    // 通过索引值修改数组中的元素  虽然修改了，但是无法做到在页面上响应式显示 
+                    // this.letters[0]= 'bbbb';
+
+                    // set(要修改的对象，索引值，修改后的值)  可以修改 并且是实时响应到页面上的
+                    Vue.set(this.letters, 0, 'bbbbbbb');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

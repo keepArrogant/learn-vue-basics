@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 作业需求： 列表默认第一个为红色 点击列表中的哪一项，那么该项的文字变成红色 -->
+    <div id="app">
+        <ul>
+            <li v-for="(m, index) in movies" :class="getClasses(index)" @click="btnClick(index)">{{index}}.{{m}}</li>
+            <!-- <li :class="{active: 0 ===currentIndex}"></li>
+            <li :class="{active: 1 ===currentIndex}"></li>
+            <li :class="{active: 2 ===currentIndex}"></li>
+            <li :class="{active: 3 ===currentIndex}"></li> -->
+
+        </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['盗梦空间', '肖生克的救赎', '绿皮书', '阿甘正传'],
+                currentIndex: 0 //默认为0  就是列表第一项为红色
+            },
+            methods: {
+                btnClick: function (index) {
+                    this.currentIndex = index;
+                },
+                getClasses: function (index) {
+                    return {
+                        active: this.currentIndex === index
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

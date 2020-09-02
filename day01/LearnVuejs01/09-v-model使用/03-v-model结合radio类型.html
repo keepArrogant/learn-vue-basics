@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 在没有v-model的时候在选择性别的时候，input里面需要加name属性 用来对性别互斥，不然两个按钮都能选中  -->
+        <label for="male">
+            <input type="radio" id="male" value="男" v-model="sex">男
+        </label>
+        <label for="female">
+            <input type="radio" id="female" value="女" v-model="sex">女
+        </label>
+        <h2>你选择的性别是：{{sex}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                sex: '男'
+            }
+        });
+    </script>
+</body>
+
+</html>

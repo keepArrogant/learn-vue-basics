@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 在模板里面和组件定义数据名时都可以使用驼峰命名  在真正的html使用时不能用驼峰 可以通过-取代 -->
+        <cpn :c-info="info" :child-my-message="message"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <h2>{{cInfo}}</h2>
+            <h2>{{childMyMessage}}</h2>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            props: {
+                cInfo: {
+                    type: Object,
+                    default () {
+                        return {}
+                    }
+                },
+                childMyMessage: {
+                    type: String,
+                    default: '请输入内容'
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                info: {
+                    name: 'why',
+                    age: 18,
+                    height: 1.78
+                },
+                message: '我是型男'
+            },
+            components: {
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- 为什么需要key这个属性呢？ -->
+            <!--    这个其实和Vue的虚拟DOM的Diff算法有关系 -->
+
+            <!-- 使用key来给每个节点做一个唯一标识 -->
+            <!--    Diff算法就可以正确的识别此节点 -->
+            <!--    找到正确的位置区插入新的节点 -->
+            <!-- 所以一句话，key的作用主要是为了高效的更新虚拟DOM -->
+            <li v-for="item in letters" :key="item">{{item}}</li>
+        </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                letters: ['A', 'B', 'C', 'D', 'E']
+            }
+        });
+    </script>
+</body>
+
+</html>

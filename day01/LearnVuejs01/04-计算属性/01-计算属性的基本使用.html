@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{firstName + ' ' + lastName}}</h2>
+        <h2>{{firstName}} {{lastName}}</h2>
+
+        <h2>{{getFullName()}}</h2>
+
+        <h2>{{fullName}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        // 什么是计算属性？
+        // 我们知道，在模板中可以直接通过插值语法显示一些data中的数据
+        // 但是在某些情况，我们可能需要对数据进行一些转化后再显示，或者需要将多个数据结合起来进行显示
+        // 比如我们有firstName和lastName两个变量 我们把它们计算的结果写在 computed选项中
+
+        //  methods和computed看起来都可以实现我们的功能
+        //  那么为什么还要多一个计算属性这个东西呢？
+        //      原因：计算属性会进行缓存，如果多次使用时，计算属性只会调用一次
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                firstName: '古力娜扎',
+                lastName: '江疏影'
+            },
+            // computed: 计算属性()
+            computed: {
+                fullName: function () {
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+            methods: {
+                getFullName() {
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

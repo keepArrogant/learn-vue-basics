@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用v-text命令和{{}}效果一样</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 数据和后面的字符会拼接起来 -->
+        <h2>{{message}},古力娜扎</h2>
+        <!-- 数据会覆盖标签中的值 -->
+        <h2 v-text="message">,古力娜扎</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+            }
+        })
+    </script>
+</body>
+
+</html>

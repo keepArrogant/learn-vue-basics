@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{totalPrice}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                books: [{
+                        id: 110,
+                        name: 'JavaScript高级程序设计',
+                        price: 89
+                    },
+                    {
+                        id: 111,
+                        name: '你不知道的JavaScript(上卷)',
+                        price: 66
+                    },
+                    {
+                        id: 112,
+                        name: 'http权威指南',
+                        price: 99
+                    },
+                    {
+                        id: 113,
+                        name: 'JavaScript数据结构',
+                        price: 79
+                    }
+                ]
+            },
+            computed: {
+                totalPrice: function () {
+                    let result = 0;
+                    for (let i = 0; i < this.books.length; i++) {
+                        result += this.books[i].price
+                    }
+                    return result
+
+                    // for(let i in this.books){
+                    //     this.books[i]
+                    // }
+
+                    // for(let book of this.books){
+
+                    // }
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
